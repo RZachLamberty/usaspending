@@ -93,8 +93,13 @@ def get(year=2019):
         for fname in glob.glob('data/all_contracts_prime_transactions_*.csv'):
             shutil.move(fname, fname.replace('all_', '{}_all_'.format(year)))
 
+        LOGGER.info('uploading csvs')
+        quick_upload()
+
         LOGGER.info('cleaning up')
         os.remove(zipname)
+        for fname in glob.glob('data/*.csv'):
+            os.remove(fname)
 
 
 def upload(file_glob='data/*.csv', bucket_name='eri-rzl-usaspending',
