@@ -126,7 +126,7 @@ def quick_upload(file_glob='data/*.csv', bucket_name='eri-rzl-usaspending'):
            'gs://eri-rzl-usaspending/').split()
     subprocess.run([
         'gsutil', '-m', '-o', 'Util:parallel_composite_upload_threshold=150M',
-        'cp', file_glob,, 'gs://{}'.format(bucket_name)
+        'cp', file_glob, 'gs://{}'.format(bucket_name)
     ])
 
 
